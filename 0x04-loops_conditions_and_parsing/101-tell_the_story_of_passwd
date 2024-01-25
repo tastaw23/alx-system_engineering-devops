@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script tells the story of /etc/passwd users
+
+# Reading /etc/passwd line by line using a while loop and IFS
+while IFS=: read -r username _ uid gid info home shell; do
+    # Extracting the user ID info
+    uid_info=$(getent passwd "$uid" | cut -d: -f5)
+
+    # Extracting the group name
+    group_name=$(getent group "$gid" | cut -d: -f1)
+
+    echo "The user $username is part of the $gid gang, lives in $home and rides $shell. $uid's place is protected by the passcode x, more info about the user here: $uid_info"
+done < /etc/passwd
+
