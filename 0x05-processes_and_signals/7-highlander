@@ -2,19 +2,11 @@
 # This script displays "To infinity and beyond" indefinitely
 # With a sleep of 2 in between each iteration
 # Responds to SIGTERM signal with "I am invincible!!!"
-
 # Function to handle SIGTERM signal
-terminate() {
-    echo "I am invincible!!!"
-    exit 0
-}
 
-# Register the terminate function to handle SIGTERM
-trap terminate SIGTERM
-
-# Infinite loop
+trap 'echo "I am invincible!!!"' 15
 while true; do
-    echo "To infinity and beyond"
+    echo "to infinity and beyond"
     sleep 2
 done
 
