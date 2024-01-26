@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script demonstrates the use of manage_my_process script
+
+# Check the command-line arguments
+case "$1" in
+    start)
+        sudo ./manage_my_process start
+        ;;
+    stop)
+        sudo ./manage_my_process stop
+        ;;
+    restart)
+        sudo ./manage_my_process restart
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        ;;
+esac
+
