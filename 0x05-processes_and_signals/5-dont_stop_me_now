@@ -1,15 +1,4 @@
 #!/usr/bin/env bash
-# This script runs indefinitely
-
-# Run the infinite loop script in the background
-./4-to_infinity_and_beyond &
-
-# Capture the PID of the background process
-pid=$!
-
-# Wait for user input in the foreground process
-read -p "Press Enter to stop the 4-to_infinity_and_beyond process..."
-
-# Use kill to stop the background process
-kill "$pid"
+# This script kills a process using command kill
+kill "$(ps -x | pgrep -f beyond)"
 
