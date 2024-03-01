@@ -1,0 +1,55 @@
+https://imgur.com/fT93QAO
+
+Whiteboard Design:
+User Access:
+
+Begin with a user wanting to access the website www.foobar.com.
+Components:
+
+Server 1 (Primary):
+Hosts the primary instances of the web server, application server, and database.
+Server 2 (Replica):
+Acts as a replica to the primary server, providing redundancy for increased availability.
+Web Server (Nginx):
+Handles HTTP requests, serves static content, and acts as a reverse proxy.
+Application Server:
+Manages dynamic aspects and executes application logic.
+Load Balancer (HAproxy):
+Distributes incoming traffic across the web servers for load balancing.
+Application Files (Your Code Base):
+The codebase for the web application.
+Database (MySQL):
+Stores and manages website data.
+Explanation:
+
+Additional Servers:
+
+The addition of Server 2 (Replica) provides redundancy and fault tolerance. In case the Primary Server fails, the Replica Server can take over.
+Load Balancer (HAproxy):
+
+Added for load balancing, distributing incoming traffic evenly between the two servers to ensure optimal performance and prevent overloading.
+Distribution Algorithm:
+
+Configure HAproxy with a round-robin distribution algorithm. This ensures that each server receives requests in turn, balancing the load.
+Active-Active Setup vs. Active-Passive Setup:
+
+Active-Active: Both servers actively handle traffic simultaneously, sharing the load.
+Active-Passive: Only one server handles traffic actively, while the other remains on standby. In case of failure, the passive server becomes active.
+Database Primary-Replica Cluster:
+
+Involves a Primary (Master) database and a Replica (Slave) database.
+The Primary node handles write operations, and the Replica node replicates the data from the Primary to handle read operations.
+Difference Between Primary and Replica:
+
+Primary handles write operations and is the authoritative source for data changes.
+Replica handles read operations and provides redundancy for data retrieval.
+Issues with the Infrastructure:
+Single Point of Failure (SPOF):
+
+Although improved with Server 2, the load balancer or database may still pose potential single points of failure.
+Security Issues:
+
+No mention of a firewall or HTTPS implementation, leaving the infrastructure vulnerable to security threats.
+No Monitoring:
+
+Lack of monitoring tools or processes may result in difficulties identifying and resolving issues promptly.

@@ -1,0 +1,35 @@
+https://imgur.com/Dx2mdy1
+
+Explanation:
+Server:
+
+A physical or virtual machine that hosts the entire web infrastructure.
+Domain Name:
+
+Acts as a human-readable address for the website (www.foobar.com).
+Maps to the server's IP (8.8.8.8) using DNS.
+DNS Record for www:
+
+The www in www.foobar.com is a subdomain and is typically a CNAME record that points to the main domain's A record.
+Web Server:
+
+Nginx, in this case, handles HTTP requests, serves static content, and acts as a reverse proxy for the application server.
+Application Server:
+
+Manages the dynamic aspects of the website, executes the application logic, and generates dynamic content.
+Database:
+
+MySQL stores and manages the website's data, providing a persistent storage solution.
+Communication:
+
+The server communicates with the user's computer over HTTP/HTTPS protocols.
+Issues with the Infrastructure:
+Single Point of Failure (SPOF):
+
+The entire infrastructure relies on a single server; if it fails, the entire website goes down.
+Downtime during Maintenance:
+
+Performing maintenance, such as deploying new code, requires restarting the web server, causing downtime.
+Limited Scalability:
+
+The infrastructure may struggle to handle high traffic loads; scaling is challenging with only one server.

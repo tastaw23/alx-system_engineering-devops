@@ -1,0 +1,46 @@
+https://imgur.com/uMwnsa8
+
+Whiteboard Design:
+User Access:
+
+Start with a user wanting to access the secured website www.foobar.com.
+Components:
+
+Firewall 1, 2, and 3:
+Placed between the internet and servers to control incoming and outgoing traffic, enhancing security.
+SSL Certificate:
+Installed to enable HTTPS, encrypting data in transit between users and the server.
+Monitoring Clients (Data Collectors):
+Collect and send data to a monitoring service (e.g., Sumologic).
+Server 1, 2, and 3:
+Consist of web servers (Nginx), application servers, and MySQL databases.
+Explanation:
+
+Firewalls:
+
+Added for security, controlling and monitoring incoming and outgoing network traffic. Each server is protected by a firewall.
+SSL Certificate (HTTPS):
+
+Enables secure communication by encrypting data between the user's browser and the server, preventing eavesdropping.
+Monitoring:
+
+Monitors the health, performance, and security of the infrastructure in real-time.
+Data collectors on each server gather metrics and logs for analysis by the monitoring service.
+Monitoring Data Collection:
+
+Utilize data collectors on each server to gather metrics such as CPU usage, memory usage, error logs, etc.
+This data is sent to the monitoring service (Sumologic), where it can be analyzed.
+Monitoring Web Server QPS:
+
+Monitor the web server's QPS (Queries Per Second) by collecting metrics related to incoming HTTP requests.
+Set up alerts for unusual spikes or drops in QPS to detect and address potential issues.
+Issues with the Infrastructure:
+Terminating SSL at the Load Balancer Level:
+
+Termination at the load balancer exposes decrypted traffic within the internal network, potentially compromising security.
+Single MySQL Server Accepting Writes:
+
+A single point of failure and potential performance bottleneck if the MySQL server becomes overwhelmed with write requests.
+Uniform Servers (Same Components):
+
+Uniformity might lead to a lack of diversity and increased vulnerability; a single flaw could affect all servers simultaneously.
