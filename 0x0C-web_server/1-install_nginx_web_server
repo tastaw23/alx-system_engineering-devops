@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# Update package index and install nginx
+apt-get update -y
+apt-get install nginx -y
+
+# Check if nginx installation was successful
+if [ $? -ne 0 ]; then
+    echo "Error: Nginx installation failed"
+    exit 1
+fi
+
+# Configure Nginx to listen on port 80
+sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+# Restart Nginx without using systemctl
+service nginx restart > /dev/null 2>&1
+
+# Check if Nginx restarted successfully
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to restart Nginx"
+    exit 1
+fi
+
+# Create a default HTML file containing "Hello World!"
+echo "Hello World!" > /var/www/html/index.html
+
+# Check if HTML file creation was successful
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to create HTML file"
+    exit 1
+fi
+
+# Exit with success message
+echo "Nginx installed and configured successfully"
